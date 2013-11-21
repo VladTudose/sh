@@ -43,6 +43,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #362C20;
   letter-spacing: 0em;
   padding: 0 0 5px 0;
+
 }
 
 h1, h2, h3 { 
@@ -548,7 +549,7 @@ ul#nav ul li a:hover {
   margin-right: 2px;
 }
 
-.diagram{
+.diagram, .outset-border{
 	border-style:outset;
 }
 
@@ -572,4 +573,8 @@ ul#images li {
 	float: right;
 	top: -50px;
 	position: relative;
+}
+
+.info-note{
+	margin-right: 90px;
 }
