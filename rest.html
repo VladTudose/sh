@@ -33,16 +33,115 @@
 	
     <div id="site_content">
       <div id="content">
-        <h1>Welcome to photo_style_two</h1>
-        <p>This standards compliant, fixed width website template is released as an 'open source' design (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>), which means that you are free to use it for anything you want (including modifying and amending it). All I ask is that you leave the 'design from css3templates.co.uk' link in the footer of the template. All of the photos were taken by me - use as you wish.</p>
-        <h3>Browser Compatibility</h3>
-        <p>This template has been tested in the following browsers:</p>
-        <ul>
-          <li>Internet Explorer 8</li>
-          <li>Internet Explorer 7</li>
-          <li>FireFox 10</li>
-          <li>Google Chrome 17</li>
-        </ul>
+		  <h2>Requests</h2>
+		  <h3>GET /requests</h3>
+		  <p>Lists the current requests for resources in the system </br>
+			  Parameters: none </br>
+			  Response: 200, the ids of all the requests in the system | 403, if the user is not authenticated or authorized</p>
+          <h3>POST /request</h3>
+          <p>Creates a new request based on the given parameters which describe an accident or a disaster</br>
+             Parameters: location, number of victims, additional information, list of resources required</br>
+             Response: 200, OK, returns the id of the created request | 403, if the user is not authenticated or authorized</p>
+			 
+             <h3>POST /request/{id}/approve/full</h3>
+             <p>Approve the request with the given id only if we have enough resources</br>
+                Parameters: none</br>
+                Response: 200, OK | 406, if we don't have enough resources | 403, if the user is not authenticated or authorized</p>
+				
+                <h3>POST /request/{id}/approve/partial</h3>
+                <p>Approve the request with the given id; if we don't have enough resources we will only sent what we have</br>
+                   Parameters: none</br>
+                   Response: 200, OK | 403, if the user is not authenticated or authorized</p>
+				   	  
+                      <h3>GET /request/{id}/deny</h3>
+                      <p>Deny the request with the given id (eventually with an explication)</br>
+                         Parameters: none</br>
+                         Response: 200, OK | 403, if the user is not authenticated or authorized</p>
+						 
+	                     <h3>GET /request/{id}/coverable</h3>
+	                     <p>Check if we have enough resources to fully satisfy the request with the given id</br>
+	                        Parameters: none</br>
+	                        Response: 200, we have enough resourced | 406, if we don't have enough resources | 403, if the user is not authenticated or authorized</p>
+							
+							<h2>Users</h2>
+							
+   	                     <h3>POST /login/{email}</h3>
+   	                     <p>Login the user with the given email</br>
+   	                        Parameters: none</br>
+   	                        Response: 200, sets a cookie for authentication</p>
+							
+      	                     <h3>POST /logout</h3>
+      	                     <p>Logout the user with the given email</br>
+      	                        Parameters: none</br>
+      	                        Response: 200, removes the cookie for authentication</p>
+								
+								<h2>Categories</h2>
+								
+         	                     <h3>GET /categories/root</h3>
+         	                     <p>Get the names of the roots of each taxonomy in the application (product taxonomy, events taxonomy etc.)</br>
+         	                        Parameters: none</br>
+         	                        Response: 200, the name of the roots of each taxonomy in the application | 403, if the user is not authenticated or authorized</p>
+									
+            	                     <h3>GET /category/{name}/subcategories</h3>
+            	                     <p>Get the names of the subcategories for the given category</br>
+            	                        Parameters: none</br>
+            	                        Response: 200, the names of the subcategories for the given category | 403, if the user is not authenticated or authorized</p>
+										
+               	                     <h3>GET /category/{name}/attributes</h3>
+               	                     <p>Get the names of the attributes for the given category</br>
+               	                        Parameters: none</br>
+               	                        Response: 200, the names of the attributes for the given category | 403, if the user is not authenticated or authorized</p>
+										
+										<h2>Resource</h2>
+										
+                  	                     <h3>POST /resource/</h3>
+                  	                     <p>Adds a new resource with the given parameters</br>
+                  	                        Parameters: category, estimated value, attributes</br>
+                  	                        Response: 200, OK, returns the id of the created resource | 403, if the user is not authenticated or authorized</p>
+											
+                     	                     <h3>GET /resource/{id}</h3>
+                     	                     <p>Get the resource with the given id</br>
+                     	                        Parameters: none</br>
+                     	                        Response: 200, OK, returns the resource with the given id | 403, if the user is not authenticated or authorized</p>
+												
+												<h2>Donations</h2>
+												
+                        	                     <h3>GET /donations</h3>
+                        	                     <p>Get the ids for all donations</br>
+                        	                        Parameters: none</br>
+                        	                        Response: 200, OK, returns the ids of all the donations in the system | 403, if the user is not authenticated or authorized</p>
+													
+                           	                     <h3>GET /donation/{id}</h3>
+                           	                     <p>Get the donation with the given id</br>
+                           	                        Parameters: none</br>
+                           	                        Response: 200, OK, returns the donation with the given id | 403, if the user is not authenticated or authorized</p>
+													
+                           	                     <h3>POST /donation</h3>
+                           	                     <p>Create a new donation with the given parameters. It also calculates how much the person who donated has to pay (may be zero if the cost of the donated items exceeds the cost of pick-up and transport) and charge him accordingly.</br>
+                           	                        Parameters: pick-up location, drop-out location, weight, items, credit card information</br>
+                           	                        Response: 200, Created | 403, if the user is not authenticated or authorized</p>
+													
+													<h2>Warehouses</h2>
+													
+                           	                     <h3>GET /warehouses</h3>
+                           	                     <p>Get the ids for all the warehouses within a given radius from a given location</br>
+                           	                        Parameters: location, radius</br>
+                           	                        Response: 200, OK, returns the ids of warehouses within the given radius form the given location | 403, if the user is not authenticated or authorized</p>
+													
+                              	                     <h3>GET /warehouse/{id}</h3>
+                              	                     <p>Get the informations for the warehouse with the given id (location, hours, etc.)</br>
+                              	                        Parameters: none</br>
+                              	                        Response: 200, OK, the informations for the warehouse with the given id | 403, if the user is not authenticated or authorized</p>
+													
+										
+						
+							
+							
+							
+			 
+
+			
+		  
       </div>
     </div>
     <footer>
