@@ -6,12 +6,14 @@
   <meta name="keywords" content="social helper charity donation project infoiasi wade web" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/style-progress.css" />
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
 </head>
 
 <body>
   <div id="main">
+  
     <header>
 	<img src="./images/logo.png" class="logo-img" alt="user-diagram" height="100px" width="100px">
       <div id="logo">
@@ -25,23 +27,53 @@
           <li><a href="index.html">Home</a></li>
 		  <li><a href="description.html">Project Description</a></li>
           <li><a href="architecture.html">Architecture and Design</a></li>
-          <li><a href="rest.html">Rest API</a></li>         
-		  <li><a href="planning.html">Sprint Planning</a></li>
-		  <li class="selected"><a href="team.html">Team</a></li>
+          <li><a href="rest.html">Rest API</a></li>
+		  <li class="selected"><a href="planning.html">Sprint Planning</a></li>
+		  <li><a href="team.html">Team</a></li>
         </ul>
       </nav>
     </header>
 	
+	<div id="site_content">
+      <div id="content">
+			<div class="demo-wrapper html5-progress-bar">
+		<div class="progress-bar-wrapper">
+			<progress id="progressbar" value="11" max="100"></progress>
+			<span class="progress-value">11% Project Completion Rate</span>
+		</div>
+	</div>
     <div id="site_content">
       <div id="content">
-        <h1>Team</h1>
+	  <hr/>
+	  <div class="outset-border">
+        <h1>Sprint 1</h1>
         <ul>
-          <li>Petrov Robert (captain)</li>
-          <li>Tudose Vlad Andrei</li>
-          <li>Cristea Vlad</li>
+          <li>Sprint planning</li>
+		  <li>Prepare sprint backlog</li>
+		  <li>Analyse tasks and estimate them</li>
+		  <li>Architecture analysis</li>
+		  <li>Create sketches</li>
+		  <li>Analysis of REST API</li>
+		  <li>Progress report</li>
+		  <li>Sprint review</li>
         </ul>
+		<hr/>
+	  </div>
+		<hr/>
+		<h1>Sprint 1 [DONE]</h1>
+		<hr/>
+		<div class="outset-border">
+		<h1>Sprint 2</h1>
+        <ul>
+          <li>Sprint planning</li>
+		 ....
+		 <hr/>
+		 </div>
       </div>
+	  <h3 class="info-note">The application will go through multiple stages of development and the progress bar bellow will show the progress made so far.</h3>
+
     </div>
+	
     <footer>
       <p>Copyright &copy; Social Helper | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>
        	<a href="http://creativecommons.org/licenses/by-nc/2.5/"><img src="./images/cc.png" class="creative-commons" alt="creative-commons" height="auto" width="auto"></a>
