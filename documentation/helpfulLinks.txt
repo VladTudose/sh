@@ -7,3 +7,5 @@ Links:
 https://github.com/faubertin/scala-play-rest-example/blob/master/app/controllers/user/UserController.scala
 
 http://www.playframework.com/documentation/2.0.4/ScalaActions
+
+http://jena.apache.org/documentation/serving_data/
