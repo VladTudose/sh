@@ -1,0 +1,33 @@
+
+///give me all data
+
+select * where {?x ?y ?z}
+
+
+/// get all the authors name for "book7"
+SELECT ?name
+WHERE
+{
+  <http://example.org/book/book7> <http://purl.org/dc/elements/1.1/creator> ?name .
+}
+
+
+/// get all book who's name containes "ow"
+SELECT  ?x ?name
+WHERE   { ?x <http://purl.org/dc/elements/1.1/creator> ?name
+          FILTER regex(?name, "ow", "i") 
+        }
+		
+		
+		
+		
+		
+///using fuseki
+
+
+ruby s-query --service http://192.168.1.118:3030/ds/query 'SELECT * {?a ?b ?c}'
+
+
+ruby s-query --service http://192.168.1.118:3030/ds/query 'SELECT ?name WHERE { ^<http://example.org/book/book7^> ^<http://purl.org/dc/elements/1.1/creator^> ?name. }'
+
+
