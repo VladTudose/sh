@@ -5,9 +5,16 @@
 GET     /                           controllers.MainController.index()
 GET     /message                    controllers.MessageController.getMessage()
 GET     /assets/javascripts/routes  controllers.MessageController.javascriptRoutes()
-GET     /bla                        controllers.MessageController.getBla(p1: Option[String])
+GET     /bla                        controllers.MessageController.getBla(email: Option[String])
 POST    /fuseki                     controllers.MessageController.postFuseki()
 GET     /form.html                  controllers.Assets.at(path="/public", file="form.html")
+
+#API
+POST    /api/donators           controllers.DonatorController.post()
+GET     /api/donators           controllers.DonatorController.getAll()
+GET     /api/donators/*id    controllers.DonatorController.get(id)
+DELETE     /api/donators/*id    controllers.DonatorController.delete(id)
+PUT        /api/donators/*id    controllers.DonatorController.put(id)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

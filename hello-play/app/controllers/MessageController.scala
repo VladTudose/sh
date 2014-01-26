@@ -7,23 +7,23 @@ import org.scardf._
 import org.joda.time.LocalDate
 import dispatch._, Defaults._
 import play.api.libs.concurrent.Execution.Implicits._
-
+import models._
 
 case class Message(value: String)
+
+//class Donator(val id: Int, val email: String, val firstName: String, val givenName: String)
 
 object MessageController extends Controller {
 
   implicit val fooWrites = Json.writes[Message]
+  implicit val donatorWrites = Json.writes[Donator]
 
   def getMessage = Action {
     Ok(Json.toJson(Message("Hello from Scala")))
   }
   
-  def getBla(p1: Option[String]) = Action {
-      p1 match {
-          case None => NotFound("Page not found fasdf asdf asdfas dfas")
-          case Some(bla) => Ok(Json.toJson(Message("bla bla bla fadsklfjasdlkfj " + p1.get)))
-      }
+  def getBla(email: Option[String]) = Action {
+      Ok(Json.toJson(Donator(11, email.get, "Robert", "Petrov")))
   }
 
   def javascriptRoutes = Action { implicit request =>

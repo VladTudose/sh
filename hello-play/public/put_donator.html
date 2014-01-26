@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+             function testing()
+             {
+                 var url ="/api/donators/3506b9de-635c-49e4-930e-f0960ec57e5c";
+                var x = new XMLHttpRequest();
+                var formData = new FormData();
+                formData.append("email", "gige@vasile.com")
+                formData.append("firstname", "Gigi")
+                formData.append("lastname", "vasile")
+                x.open("PUT", url, true);
+                x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                
+                x.send(formData);
+                
+                alert("done");
+                
+             }
+            </script>
+
+    </head>
+
+
+    <body>
+        <button id="a" value="Submit" onclick="testing()"/>
+    </body>
+</html>
