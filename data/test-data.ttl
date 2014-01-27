@@ -1,0 +1,47 @@
+@prefix foaf:	<http://xmlns.com/foaf/0.1/> .
+@prefix ns1:	<http://en.wikipedia.org/wiki/> .
+@prefix ns2:	<http://live.dbpedia.org/resource/> .
+@prefix ns7:	<http://live.dbpedia.org/property/> .
+@prefix ns8:	<http://live.dbpedia.org/resource/Template:> .
+@prefix ns9:	<http://live.dbpedia.org/ontology/> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+@prefix dbpedia:	<http://dbpedia.org/resource/> .
+@prefix dcterms:	<http://purl.org/dc/terms/> .
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#> .
+@prefix socialhelper:	<http://socialhelper.com/ontology#> .
+
+<http://socialhelper.com/api/donator/1> a socialhelper:Donator.
+<http://socialhelper.com/api/donatie/1> a socialhelper:Donatie.
+<http://socialhelper.com/api/donator/1> socialhelper:email "donator1@gmail.com"@ro.
+<http://socialhelper.com/api/donator/1> socialhelper:firstname "Catalin".
+<http://socialhelper.com/api/donator/1> socialhelper:givename "Popescu".
+<http://socialhelper.com/api/resourcequantity/1> a socialhelper:ResourceQuantity.
+<http://socialhelper.com/api/donatie/1> socialhelper:hasDonationResourceQuantity <http://socialhelper.com/api/resourcequantity/1>.
+<http://socialhelper.com/api/resource/1> a socialhelper:resurse.
+<http://socialhelper.com/api/resourcequantity/1> socialhelper:resource <http://socialhelper.com/api/resource/1>.
+<http://socialhelper.com/api/resource/1> socialhelper:name "patura"@ro.
+<http://socialhelper.com/api/resource/1> socialhelper:description "groasa si mov"@ro.
+<http://socialhelper.com/api/warehouse/1> a socialhelper:Warehouse.
+<http://socialhelper.com/api/location/1> a socialhelper:Location.
+<http://socialhelper.com/api/warehouse/1> socialhelper:hasWarehouseLocation <http://socialhelper.com/api/location/1>.
+<http://socialhelper.com/api/location/1> socialhelper:country "Franta"@ro.
+<http://socialhelper.com/api/location/1> socialhelper:city "Paris"@ro.
+<http://socialhelper.com/api/disaster/1> a socialhelper:TsunamiDisaster.
+<http://socialhelper.com/api/disaster/1> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/1>.
+
+<http://socialhelper.com/api/disaster/1> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/1>.
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
