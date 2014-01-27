@@ -29,10 +29,45 @@
 <http://socialhelper.com/api/location/1> socialhelper:city "Paris"@ro.
 <http://socialhelper.com/api/disaster/1> a socialhelper:TsunamiDisaster.
 <http://socialhelper.com/api/disaster/1> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/1>.
-
 <http://socialhelper.com/api/disaster/1> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/1>.
-
-
+<http://socialhelper.com/api/donator/2> a socialhelper:Donator.
+<http://socialhelper.com/api/donatie/2> a socialhelper:Donatie.
+<http://socialhelper.com/api/donator/2> socialhelper:email "donator1@gmail.com"@ro.
+<http://socialhelper.com/api/donator/2> socialhelper:firstname "Catalin".
+<http://socialhelper.com/api/donator/2> socialhelper:givename "Popescu".
+<http://socialhelper.com/api/resourcequantity/2> a socialhelper:ResourceQuantity.
+<http://socialhelper.com/api/donatie/2> socialhelper:hasDonationResourceQuantity <http://socialhelper.com/api/resourcequantity/2>.
+<http://socialhelper.com/api/resource/2> a socialhelper:resurse.
+<http://socialhelper.com/api/resourcequantity/2> socialhelper:resource <http://socialhelper.com/api/resource/2>.
+<http://socialhelper.com/api/resource/2> socialhelper:name "patura"@ro.
+<http://socialhelper.com/api/resource/2> socialhelper:description "groasa si mov"@ro.
+<http://socialhelper.com/api/warehouse/2> a socialhelper:Warehouse.
+<http://socialhelper.com/api/location/2> a socialhelper:Location.
+<http://socialhelper.com/api/warehouse/2> socialhelper:hasWarehouseLocation <http://socialhelper.com/api/location/2>.
+<http://socialhelper.com/api/location/2> socialhelper:country "Franta"@ro.
+<http://socialhelper.com/api/location/2> socialhelper:city "Paris"@ro.
+<http://socialhelper.com/api/disaster/2> a socialhelper:TsunamiDisaster.
+<http://socialhelper.com/api/disaster/2> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/2>.
+<http://socialhelper.com/api/disaster/2> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/2>.
+<http://socialhelper.com/api/donator/3> a socialhelper:Donator.
+<http://socialhelper.com/api/donatie/3> a socialhelper:Donatie.
+<http://socialhelper.com/api/donator/3> socialhelper:email "donator1@gmail.com"@ro.
+<http://socialhelper.com/api/donator/3> socialhelper:firstname "Catalin".
+<http://socialhelper.com/api/donator/3> socialhelper:givename "Popescu".
+<http://socialhelper.com/api/resourcequantity/3> a socialhelper:ResourceQuantity.
+<http://socialhelper.com/api/donatie/3> socialhelper:hasDonationResourceQuantity <http://socialhelper.com/api/resourcequantity/3>.
+<http://socialhelper.com/api/resource/3> a socialhelper:resurse.
+<http://socialhelper.com/api/resourcequantity/3> socialhelper:resource <http://socialhelper.com/api/resource/3>.
+<http://socialhelper.com/api/resource/3> socialhelper:name "patura"@ro.
+<http://socialhelper.com/api/resource/3> socialhelper:description "groasa si mov"@ro.
+<http://socialhelper.com/api/warehouse/3> a socialhelper:Warehouse.
+<http://socialhelper.com/api/location/3> a socialhelper:Location.
+<http://socialhelper.com/api/warehouse/3> socialhelper:hasWarehouseLocation <http://socialhelper.com/api/location/3>.
+<http://socialhelper.com/api/location/3> socialhelper:country "Franta"@ro.
+<http://socialhelper.com/api/location/3> socialhelper:city "Paris"@ro.
+<http://socialhelper.com/api/disaster/3> a socialhelper:TsunamiDisaster.
+<http://socialhelper.com/api/disaster/3> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/3>.
+<http://socialhelper.com/api/disaster/3> socialhelper:hasDisasterLocation <http://socialhelper.com/api/location/3>.
 
 
 
