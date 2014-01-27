@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+             function testing()
+             {
+                 var url ="/api/resources/dc121729-8a41-49f8-bdf4-7626bc2eacd6";
+                var x = new XMLHttpRequest();
+                x.open("DELETE", url, true);
+                x.send(null);
+                alert("done");
+                
+             }
+            </script>
+
+    </head>
+
+
+    <body>
+        <button id="a" value="Submit" onclick="testing()"/>
+    </body>
+</html>
