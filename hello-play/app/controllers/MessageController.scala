@@ -37,7 +37,7 @@ object MessageController extends Controller {
     dc\"creator" -> UriRef( "http://example.org/staffid/85740" )) )
     val rez = g.rend
     println(rez)
-    val req = url("http://192.168.1.118:3030/ds/data?default").POST.setBody(rez).addHeader("Content-type", "text/turtle")
+    val req = url("http://localhost:3030/ds/data?default").POST.setBody(rez).addHeader("Content-type", "text/turtle")
     Http(req OK as.String)
     Ok(Json.toJson(Message("OK")))
   }
