@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>    
+            $(document).ready(function (){
+            alert("1");
+            $.ajax({
+                type: "PUT",
+                url: "http://192.168.1.212:9000/api/donators/3f7fa30f-53c9-43cf-b741-3ab3cccfa436",
+                data: { firstname: "Dica", lastname: "$$$$$$$$$$$", email: "dica@gmail.com" }
+            });
+            alert("done");
+            });
+            </script>
+
+    </head>
+
+
+    <body>
+        <button id="a" value="Submit" onclick="testing()"/>
+    </body>
+</html>

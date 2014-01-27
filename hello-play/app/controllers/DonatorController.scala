@@ -53,28 +53,29 @@ object DonatorController extends Controller {
   }
   
   def put(id: String) = Action { request =>
-      // println("#################PUT " + id)
-      // delete(id)
-      // println("#################DONE DELETE")
-      // val body = request.body.asFormUrlEncoded
-      // println(request.headers)
-      // println("#################DONE BODY " + body)
-      // val firstName = body.get("firstname")(0)
-      // println("#################DONE fistname")
-      // val lastName = body.get("lastname")(0)
-      // println("#################DONE lastname")
-      // val email = body.get("email")(0)
-      // println("#################DONE email")
-      // 
-      // val ttl = "@prefix : <http://socialhelper.com/donators#> .\n" +
-      //           ":" + id + "\n" +
-      //           ":email \"" + email + "\" ;\n" +
-      //           ":firstName \"" + firstName + "\" ;\n" +
-      //           ":lastName \"" + lastName + "\" ."
-      // 
-      // val req = url("http://192.168.1.118:3030/ds/data?default").POST.setBody(ttl).addHeader("Content-type", "text/turtle")
-      // val rez = Http(req OK as.String)
-      //  Ok(rez.apply())
-      Ok("fasdfasd")
+      println("#################PUT " + id)
+      val del = "DELETE {<http://socialhelper.com/donators#" + id + "> ?p ?o} WHERE {<http://socialhelper.com/donators#" + id + "> ?p ?o}" 
+      val req = url("http://192.168.1.118:3030/ds/update").POST << Map("update" -> del)
+      val rez1 = Http(req OK as.String)
+      println("#################DONE DELETE " + rez1.apply())
+      val body = request.body.asFormUrlEncoded
+      println(request.headers)
+      println("#################DONE BODY " + body)
+      val firstName = body.get("firstname")(0)
+      println("#################DONE fistname")
+      val lastName = body.get("lastname")(0)
+      println("#################DONE lastname")
+      val email = body.get("email")(0)
+      println("#################DONE email")
+      
+      val ttl = "@prefix : <http://socialhelper.com/donators#> .\n" +
+                ":" + id + "\n" +
+                ":email \"" + email + "\" ;\n" +
+                ":firstName \"" + firstName + "\" ;\n" +
+                ":lastName \"" + lastName + "\" ."
+      
+      val req2 = url("http://192.168.1.118:3030/ds/data?default").POST.setBody(ttl).addHeader("Content-type", "text/turtle")
+      val rez = Http(req2 OK as.String)
+      Ok(rez.apply())
   }
 }
