@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>    
+            $(document).ready(function (){
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:9000/api/donations",
+                    acccept: "application/json",
+                    success: function(response) {
+                        response = JSON.parse(response)
+                        for (var i=0;i<response.results.bindings.length;i++) {
+                            var table = document.getElementById("table")
+                            var row = table.insertRow(i);
+                            row.insertCell(0).innerHTML = response.results.bindings[i].s.value
+                            row.insertCell(1).innerHTML = response.results.bindings[i].p.value
+                            row.insertCell(2).innerHTML = response.results.bindings[i].o.value
+                        }
+                        
+                        
+                    }
+                });
+                
+            });
+            </script>
+
+    </head>
+
+
+    <body id = "body">
+    <table id = "table" border="1">
+    </table>
+    </body>
+</html>

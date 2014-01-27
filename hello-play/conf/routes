@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.MainController.index()
+GET     /                           controllers.Assets.at(path="/public", file="index.html")
 GET     /message                    controllers.MessageController.getMessage()
 GET     /assets/javascripts/routes  controllers.MessageController.javascriptRoutes()
 GET     /bla                        controllers.MessageController.getBla(email: Option[String])

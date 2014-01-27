@@ -17,7 +17,7 @@ object DonatorController extends Controller {
       val lastName = body.get("lastname")(0)
       val email = body.get("email")(0)
       val id = java.util.UUID.randomUUID.toString
-      val ttl = "@prefix : <http://socialhelper.com/donators#> .\n" +
+      val ttl = "@prefix : <http://socialhelper.com/donators/> .\n" +
                 ":" + id + "\n" +
                 ":email \"" + email + "\" ;\n" +
                 ":firstName \"" + firstName + "\" ;\n" +
@@ -29,7 +29,7 @@ object DonatorController extends Controller {
   }
   
   def getAll = Action {
-      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/donators#\")) .\n}"
+      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/donators/\")) .\n}"
       val req = url("http://192.168.1.118:3030/ds/query?default") <<? Map("query" -> query)
       val rez = Http(req OK as.String)
       Ok(rez.apply())
@@ -37,14 +37,14 @@ object DonatorController extends Controller {
   
   def get(id: String) = Action {
       print("!!!!!!!!!!!!!!!!!!!!!###### " + id)
-      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/donators#" + id + "\")) .\n}"
+      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/donators/" + id + "\")) .\n}"
       val req = url("http://192.168.1.118:3030/ds/query?default") <<? Map("query" -> query)
       val rez = Http(req OK as.String)
       Ok(rez.apply())
   }
   
   def delete(id: String) = Action {
-      val del = "DELETE {<http://socialhelper.com/donators#" + id + "> ?p ?o} WHERE {<http://socialhelper.com/donators#" + id + "> ?p ?o}" 
+      val del = "DELETE {<http://socialhelper.com/donators/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/donators/" + id + "> ?p ?o}" 
       println("!!!!!!!!!!!!!!!!!!!!! " + id)
       println(del)
       val req = url("http://192.168.1.118:3030/ds/update").POST << Map("update" -> del)
@@ -54,7 +54,7 @@ object DonatorController extends Controller {
   
   def put(id: String) = Action { request =>
       println("#################PUT " + id)
-      val del = "DELETE {<http://socialhelper.com/donators#" + id + "> ?p ?o} WHERE {<http://socialhelper.com/donators#" + id + "> ?p ?o}" 
+      val del = "DELETE {<http://socialhelper.com/donators/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/donators/" + id + "> ?p ?o}" 
       val req = url("http://192.168.1.118:3030/ds/update").POST << Map("update" -> del)
       val rez1 = Http(req OK as.String)
       println("#################DONE DELETE " + rez1.apply())
@@ -68,7 +68,7 @@ object DonatorController extends Controller {
       val email = body.get("email")(0)
       println("#################DONE email")
       
-      val ttl = "@prefix : <http://socialhelper.com/donators#> .\n" +
+      val ttl = "@prefix : <http://socialhelper.com/donators/> .\n" +
                 ":" + id + "\n" +
                 ":email \"" + email + "\" ;\n" +
                 ":firstName \"" + firstName + "\" ;\n" +
