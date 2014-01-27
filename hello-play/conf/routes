@@ -40,6 +40,17 @@ GET     /api/donations/*id    controllers.DonationController.get(id)
 DELETE     /api/donations/*id    controllers.DonationController.delete(id)
 PUT        /api/donations/*id    controllers.DonationController.put(id)
 
+POST    /api/disasters           controllers.DisasterController.post()
+GET     /api/disasters           controllers.DisasterController.getAll()
+GET     /api/disasters/*id    controllers.DisasterController.get(id)
+DELETE     /api/disasters/*id    controllers.DisasterController.delete(id)
+PUT        /api/disasters/*id    controllers.DisasterController.put(id)
+
+POST    /api/warehouses           controllers.WarehouseController.post()
+GET     /api/warehouses           controllers.WarehouseController.getAll()
+GET     /api/warehouses/*id    controllers.WarehouseController.get(id)
+DELETE     /api/warehouses/*id    controllers.WarehouseController.delete(id)
+PUT        /api/warehouses/*id    controllers.WarehouseController.put(id)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
