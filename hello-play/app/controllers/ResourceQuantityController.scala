@@ -27,26 +27,16 @@ object ResourceQuantityController extends Controller {
   }
   
   def getAll = Action {
-<<<<<<< HEAD
-      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/resourcequantities/\")) .\n}"
-      val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
-=======
       val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/api/resourcequantities/\")) .\n}"
       val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
->>>>>>> fixed links
       val rez = Http(req OK as.String)
       Ok(rez.apply())
   }
   
   def get(id: String) = Action {
       print("!!!!!!!!!!!!!!!!!!!!!###### " + id)
-<<<<<<< HEAD
-      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/resourcequantities/" + id + "\")) .\n}"
-      val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
-=======
       val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/api/resourcequantities/" + id + "\")) .\n}"
       val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
->>>>>>> fixed links
       val rez = Http(req OK as.String)
       Ok(rez.apply())
   }
@@ -62,13 +52,8 @@ object ResourceQuantityController extends Controller {
   
   def put(id: String) = Action { request =>
       println("#################PUT " + id)
-<<<<<<< HEAD
-      val del = "DELETE {<http://socialhelper.com/resourcequantities/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/resourcequantities/" + id + "> ?p ?o}" 
-      val req1 = url("http://localhost:3030/ds/update").POST << Map("update" -> del)
-=======
       val del = "DELETE {<http://socialhelper.com/api/resourcequantities/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/api/resourcequantities/" + id + "> ?p ?o}" 
       val req1 = url("http://localhost:3030/ds/update").POST << Map("update" -> del)
->>>>>>> fixed links
       val rez1 = Http(req1 OK as.String)
       println("#################DONE DELETE " + rez1.apply())
       
