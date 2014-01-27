@@ -5,16 +5,19 @@
             $(document).ready(function (){
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:9000/api/donations",
+                    url: "http://localhost:9000/api/donators",
                     acccept: "application/json",
                     success: function(response) {
                         response = JSON.parse(response)
                         for (var i=0;i<response.results.bindings.length;i++) {
                             var table = document.getElementById("table")
                             var row = table.insertRow(i);
-                            row.insertCell(0).innerHTML = response.results.bindings[i].s.value
-                            row.insertCell(1).innerHTML = response.results.bindings[i].p.value
-                            row.insertCell(2).innerHTML = response.results.bindings[i].o.value
+                            var s = response.results.bindings[i].s.value.replace("socialhelper.com","localhost:9000")
+                            var p = response.results.bindings[i].p.value.replace("socialhelper.com","localhost:9000")
+                            var o = response.results.bindings[i].o.value.replace("socialhelper.com","localhost:9000")
+                            row.insertCell(0).innerHTML = "<a href = " + s + ">" + s + "</a>"
+                            row.insertCell(1).innerHTML = "<a href = " + p + ">" + p + "</a>"
+                            row.insertCell(2).innerHTML = "<a href = " + o + ">" + o + "</a>"
                         }
                         
                         
@@ -26,9 +29,11 @@
 
     </head>
 
-
+    <a href="create_donator.html">create donator</a>
     <body id = "body">
     <table id = "table" border="1">
     </table>
+    Relations:
+    <a href="donations.html">donations</a>
     </body>
 </html>

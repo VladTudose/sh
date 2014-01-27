@@ -2,12 +2,20 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.Assets.at(path="/public", file="index.html")
+GET     /                           controllers.Assets.at(path="/public", file="donations.html")
+GET     /donations                  controllers.Assets.at(path="/public", file="donations.html")
+GET     /donators                   controllers.Assets.at(path="/public", file="donators.html")
+GET     /resourceQuantities         controllers.Assets.at(path="/public", file="resourceQuantities.html")
+
+
+
 GET     /message                    controllers.MessageController.getMessage()
 GET     /assets/javascripts/routes  controllers.MessageController.javascriptRoutes()
 GET     /bla                        controllers.MessageController.getBla(email: Option[String])
 POST    /fuseki                     controllers.MessageController.postFuseki()
 GET     /form.html                  controllers.Assets.at(path="/public", file="form.html")
+
+
 
 #API
 POST    /api/donators           controllers.DonatorController.post()
@@ -54,4 +62,5 @@ PUT        /api/warehouses/*id    controllers.WarehouseController.put(id)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /*file                      controllers.Assets.at(path="/public", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
