@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY ontology "http://socialhelper.com/ontology#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://socialhelper.com/ontology#"
+     xml:base="http://socialhelper.com/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ontology="http://socialhelper.com/ontology#">
+    <owl:Ontology rdf:about="http://socialhelper.com/ontology">
+        <rdfs:comment>An ontology for describing a donation system</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://socialhelper.com/ontology#hasDisasterLocation -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasDisasterLocation">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&ontology;Disaster"/>
+        <rdfs:range rdf:resource="&ontology;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#hasDonationResourceQuantity -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasDonationResourceQuantity">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&ontology;Donation"/>
+        <rdfs:range rdf:resource="&ontology;ResourceQuantity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#hasDonator -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasDonator">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&ontology;Donation"/>
+        <rdfs:range rdf:resource="&ontology;Donator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#hasResource -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasResource">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&ontology;ResourceQuantity"/>
+        <rdfs:range rdf:resource="&ontology;Resurse"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#hasWarehouseLocation -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasWarehouseLocation">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&ontology;Location"/>
+        <rdfs:domain rdf:resource="&ontology;Warehouse"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#hasWarehouseResourceQuantity -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasWarehouseResourceQuantity">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&ontology;ResourceQuantity"/>
+        <rdfs:domain rdf:resource="&ontology;Warehouse"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://socialhelper.com/ontology#city -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;city">
+        <rdfs:domain rdf:resource="&ontology;Location"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#country -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;country">
+        <rdfs:domain rdf:resource="&ontology;Location"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#description -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;description">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#email -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;email">
+        <rdfs:domain rdf:resource="&ontology;Donator"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#firstname -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;firstname">
+        <rdfs:domain rdf:resource="&ontology;Donator"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#givenname -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;givenname">
+        <rdfs:domain rdf:resource="&ontology;Donator"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://socialhelper.com/ontology#name -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;name">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://socialhelper.com/ontology#Building -->
+
+    <owl:Class rdf:about="&ontology;Building"/>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Disaster -->
+
+    <owl:Class rdf:about="&ontology;Disaster">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasDisasterLocation"/>
+                <owl:allValuesFrom rdf:resource="&ontology;Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;name"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Donation -->
+
+    <owl:Class rdf:about="&ontology;Donation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasDonationResourceQuantity"/>
+                <owl:allValuesFrom rdf:resource="&ontology;ResourceQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasDonator"/>
+                <owl:allValuesFrom rdf:resource="&ontology;Donator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Donator -->
+
+    <owl:Class rdf:about="&ontology;Donator">
+        <rdfs:subClassOf rdf:resource="&ontology;Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;givenname"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;firstname"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;email"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#EarthquakeDisaster -->
+
+    <owl:Class rdf:about="&ontology;EarthquakeDisaster">
+        <rdfs:subClassOf rdf:resource="&ontology;NaturalDisaster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Geoname -->
+
+    <owl:Class rdf:about="&ontology;Geoname"/>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Location -->
+
+    <owl:Class rdf:about="&ontology;Location">
+        <rdfs:subClassOf rdf:resource="&ontology;Geoname"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;city"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;country"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#NaturalDisaster -->
+
+    <owl:Class rdf:about="&ontology;NaturalDisaster">
+        <rdfs:subClassOf rdf:resource="&ontology;Disaster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Person -->
+
+    <owl:Class rdf:about="&ontology;Person"/>
+    
+
+
+    <!-- http://socialhelper.com/ontology#ResourceQuantity -->
+
+    <owl:Class rdf:about="&ontology;ResourceQuantity">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasResource"/>
+                <owl:allValuesFrom rdf:resource="&ontology;Resurse"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Resurse -->
+
+    <owl:Class rdf:about="&ontology;Resurse">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;description"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;name"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#TsunamiDisaster -->
+
+    <owl:Class rdf:about="&ontology;TsunamiDisaster">
+        <rdfs:subClassOf rdf:resource="&ontology;NaturalDisaster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://socialhelper.com/ontology#Warehouse -->
+
+    <owl:Class rdf:about="&ontology;Warehouse">
+        <rdfs:subClassOf rdf:resource="&ontology;Building"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasWarehouseResourceQuantity"/>
+                <owl:allValuesFrom rdf:resource="&ontology;ResourceQuantity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasWarehouseLocation"/>
+                <owl:allValuesFrom rdf:resource="&ontology;Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://socialhelper.com/ontology#Warehouse1 -->
+
+    <owl:NamedIndividual rdf:about="&ontology;Warehouse1">
+        <name>unnume</name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontology;Building"/>
+            <rdf:Description rdf:about="&ontology;Disaster"/>
+            <rdf:Description rdf:about="&ontology;Donation"/>
+            <rdf:Description rdf:about="&ontology;Geoname"/>
+            <rdf:Description rdf:about="&ontology;Person"/>
+            <rdf:Description rdf:about="&ontology;ResourceQuantity"/>
+            <rdf:Description rdf:about="&ontology;Resurse"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
