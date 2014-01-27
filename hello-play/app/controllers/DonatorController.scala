@@ -6,10 +6,6 @@ import play.api.libs.concurrent.Execution.Implicits._
 
 object DonatorController extends Controller {
     
-  //TODO baga ontologii
-  //TODO baga @en
-  //TODO parseaza JSON
-  
   def post = Action { request =>
       val body = request.body.asFormUrlEncoded
       println("#################DONE BODY " + body)

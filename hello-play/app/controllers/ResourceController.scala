@@ -5,10 +5,6 @@ import dispatch._, Defaults._
 import play.api.libs.concurrent.Execution.Implicits._
 
 object ResourceController extends Controller {
-    
-  //TODO baga ontologii
-  //TODO baga @en
-  //TODO parseaza JSON
   
   def post = Action { request =>
       val body = request.body.asFormUrlEncoded

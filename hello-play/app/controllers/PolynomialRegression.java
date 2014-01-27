@@ -1,13 +1,6 @@
 import Jama.Matrix;
 import Jama.QRDecomposition;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Robert
- * Date: 1/27/14
- * Time: 2:46 AM
- * To change this template use File | Settings | File Templates.
- */
 public class PolynomialRegression {
     private final int N;
     private final int degree;
