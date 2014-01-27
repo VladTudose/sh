@@ -32,7 +32,7 @@ object LocationController extends Controller {
       val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
 =======
       val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/api/locations/\")) .\n}"
-      val req = url("http://192.168.1.118:3030/ds/query?default") <<? Map("query" -> query)
+      val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
 >>>>>>> fixed links
       val rez = Http(req OK as.String)
       Ok(rez.apply())
@@ -45,7 +45,7 @@ object LocationController extends Controller {
       val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
 =======
       val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/api/locations/" + id + "\")) .\n}"
-      val req = url("http://192.168.1.118:3030/ds/query?default") <<? Map("query" -> query)
+      val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
 >>>>>>> fixed links
       val rez = Http(req OK as.String)
       Ok(rez.apply())
@@ -67,7 +67,7 @@ object LocationController extends Controller {
       val req1 = url("http://localhost:3030/ds/update").POST << Map("update" -> del)
 =======
       val del = "DELETE {<http://socialhelper.com/api/locations/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/api/locations/" + id + "> ?p ?o}" 
-      val req1 = url("http://192.168.1.118:3030/ds/update").POST << Map("update" -> del)
+      val req1 = url("http://localhost:3030/ds/update").POST << Map("update" -> del)
 >>>>>>> fixed links
       val rez1 = Http(req1 OK as.String)
       println("#################DONE DELETE " + rez1.apply())
