@@ -16,7 +16,7 @@ object LocationController extends Controller {
       val country = body.get("country")(0)
       val city = body.get("city")(0)
       val id = java.util.UUID.randomUUID.toString
-      val ttl = "@prefix : <http://socialhelper.com/locations/> .\n" +
+      val ttl = "@prefix : <http://socialhelper.com/api/locations/> .\n" +
                 ":" + id + "\n" +
                 ":country \"" + country + "\" ;\n" +
                 ":city \"" + city + "\" ."
@@ -27,22 +27,32 @@ object LocationController extends Controller {
   }
   
   def getAll = Action {
+<<<<<<< HEAD
       val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/locations/\")) .\n}"
       val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
+=======
+      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/api/locations/\")) .\n}"
+      val req = url("http://192.168.1.118:3030/ds/query?default") <<? Map("query" -> query)
+>>>>>>> fixed links
       val rez = Http(req OK as.String)
       Ok(rez.apply())
   }
   
   def get(id: String) = Action {
       print("!!!!!!!!!!!!!!!!!!!!!###### " + id)
+<<<<<<< HEAD
       val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/locations/" + id + "\")) .\n}"
       val req = url("http://localhost:3030/ds/query?default") <<? Map("query" -> query)
+=======
+      val query = "SELECT ?s ?p ?o WHERE { ?s ?p ?o .\nFILTER(STRSTARTS(STR(?s), \"http://socialhelper.com/api/locations/" + id + "\")) .\n}"
+      val req = url("http://192.168.1.118:3030/ds/query?default") <<? Map("query" -> query)
+>>>>>>> fixed links
       val rez = Http(req OK as.String)
       Ok(rez.apply())
   }
   
   def delete(id: String) = Action {
-      val del = "DELETE {<http://socialhelper.com/locations/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/locations/" + id + "> ?p ?o}" 
+      val del = "DELETE {<http://socialhelper.com/api/locations/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/api/locations/" + id + "> ?p ?o}" 
       println("!!!!!!!!!!!!!!!!!!!!! " + id)
       println(del)
       val req = url("http://localhost:3030/ds/update").POST << Map("update" -> del)
@@ -52,15 +62,20 @@ object LocationController extends Controller {
   
   def put(id: String) = Action { request =>
       println("#################PUT " + id)
+<<<<<<< HEAD
       val del = "DELETE {<http://socialhelper.com/locations/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/locations/" + id + "> ?p ?o}" 
       val req1 = url("http://localhost:3030/ds/update").POST << Map("update" -> del)
+=======
+      val del = "DELETE {<http://socialhelper.com/api/locations/" + id + "> ?p ?o} WHERE {<http://socialhelper.com/api/locations/" + id + "> ?p ?o}" 
+      val req1 = url("http://192.168.1.118:3030/ds/update").POST << Map("update" -> del)
+>>>>>>> fixed links
       val rez1 = Http(req1 OK as.String)
       println("#################DONE DELETE " + rez1.apply())
       
       val body = request.body.asFormUrlEncoded
       val country = body.get("country")(0)
       val city = body.get("city")(0)
-      val ttl = "@prefix : <http://socialhelper.com/locations/> .\n" +
+      val ttl = "@prefix : <http://socialhelper.com/api/locations/> .\n" +
                 ":" + id + "\n" +
                 ":country \"" + country + "\" ;\n" +
                 ":city \"" + city + "\" ."
