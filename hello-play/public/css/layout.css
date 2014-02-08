@@ -52,7 +52,7 @@
 		-webkit-border-radius:9px;
 		border-radius:9px;
 		margin: 150px auto 0;
-		background: url(../images/form-bg.png) top left;
+		background-color: gray;	
 		padding: 8px 0 0 8px; 
 		}
 	
@@ -89,6 +89,8 @@
 		margin: 0 auto;
 		color: #aeaeae;
 		border: 1px solid #bec2c4;
+		-webkit-border-radius : 9px;
+		-webkit-border-radius:9px;
 	}
 	
 	input[type="text"]:focus, input[type="password"]:focus{
