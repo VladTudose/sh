@@ -1,9 +1,57 @@
+<!DOCTYPE HTML>
 <html>
-    <body>
-        <form action="/api/donations" method="POST">
-            Donator: <input type="text" name="donator"><br>
-            ResourceQuantity: <input type="text" name="resourcequantity"><br>
-            <input type="submit" value="Submit">
-        </form>
-    </body>
+	<head>
+	  <title>Social Helper</title>
+	  <meta name="keywords" content="social helper charity donation project infoiasi wade web" />
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	  <link rel="stylesheet" type="text/css" href="css/style.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/skeleton.css">
+		<link rel="stylesheet" href="css/layout.css">
+	  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+	</head>
+	<body>
+	  <div id="main">
+		<header>
+		<img src="./images/logo.png" class="logo-img" alt="user-diagram" height="100px" width="100px">
+		  <div id="logo">
+			<div id="logo_text">
+			  <h1><a href="index.html" style ="color:rgba(232, 230, 236, 0.51)">Social <span class="logo_colour"  >Helper</span></a></h1>
+			</div>
+		  </div>
+		  <nav style="width: 100%;">
+			<ul class="sf-menu" id="nav">
+			  <li><a href="index.html">Index</a></li>
+			  <li class="selected"><a href="create_donation.html">Create Donation</a></li>
+			  <li><a href="put_donation.html">Update Donation</a></li>
+			  <li><a href="delete_donation.html">Delete Donation</a></li>		  
+			</ul>
+		  </nav>
+		</header>
+		<div id="site_content">
+		  <div id="content">			
+				<div class="container">
+					<div class="form-bg-3">					
+						<form action="/api/donations" method="POST">
+							<h2>Create Donator</h2>
+							<input type="text" name="donator" placeholder="Donator"><br>
+							<input type="text" name="resource" placeholder="Resource"><br>
+							<input type="text" name="quantity" placeholder="Quantity"><br>
+							<button type="submit"></button>
+						</form>
+					</div>
+				</div><!-- container -->
+			<p id="tags"><strong>Tags:</strong> social, helper, donation, resource</p>
+		  </div>
+		</div>
+		<footer>
+			<a href="http://creativecommons.org/licenses/by-nc/2.5/"><img src="./images/cc.png" class="creative-commons" alt="creative-commons" height="auto" width="auto"></a>
+		</footer>
+	  </div>
+	  <p>&nbsp;</p>
+	  <script type="text/javascript" src="js/jquery.js"></script>
+	  <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+	  <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+	</body>
 </html>
