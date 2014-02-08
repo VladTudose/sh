@@ -598,3 +598,32 @@ ul#images li {
 .welcome:hover{
 	color: #333;
 }
+.duo{
+	width:200px !important;
+}
+
+#listResourceQuantity
+{
+	position: relative;
+	top: -190px;
+}
+
+#listResourceQuantity button{
+	background:none;
+	background-color:#09BCE8;
+}
+
+.submitDisaster{
+	position: relative !important;
+	top: -140px !important;
+}
+
+.removeBtnRQ{
+	position: relative;
+	top: -75px;
+	left: 300px
+}
+#addRQ{
+	position: relative;
+	right: 120px;
+}
