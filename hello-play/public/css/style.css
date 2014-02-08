@@ -582,3 +582,19 @@ ul#images li {
 .info-note{
 	margin-right: 90px;
 }
+
+.admin_welcome{
+	position: relative;
+	top: 120px;
+	height: 90px !important;
+	text-align: center;
+	font-weight: bold;
+	font-size: x-large;
+	font-style: italic;
+}
+.welcome{
+	color: #09BCE8;
+}
+.welcome:hover{
+	color: #333;
+}
