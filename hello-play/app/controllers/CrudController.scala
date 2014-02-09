@@ -1,6 +1,6 @@
 package controllers
 
-import play.api.mvc.{Action, Controller, AnyContentAsFormUrlEncoded}
+import play.api.mvc.{Action, Controller}
 import dispatch._, Defaults._
 import play.api.libs.json._
 import play.api.libs.json.Json._
