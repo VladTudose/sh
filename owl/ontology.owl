@@ -16,10 +16,11 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      ontologyIRI="http://socialhelper.com/ontology">
-    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
-    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <Literal datatypeIRI="&rdf;PlainLiteral">An ontology for describing a donation system</Literal>
@@ -52,10 +53,10 @@
         <Class IRI="#Person"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ResourceQuantity"/>
+        <Class IRI="#Resource"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Resurse"/>
+        <Class IRI="#ResourceQuantity"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TsunamiDisaster"/>
@@ -100,7 +101,19 @@
         <DataProperty IRI="#givenname"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#latitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#longitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#magnitude"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#quantity"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Warehouse1"/>
@@ -163,6 +176,27 @@
         <Class IRI="#NaturalDisaster"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#EarthquakeDisaster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#magnitude"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Geoname"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#latitude"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Geoname"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#longitude"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Location"/>
         <Class IRI="#Geoname"/>
     </SubClassOf>
@@ -185,23 +219,30 @@
         <Class IRI="#Disaster"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ResourceQuantity"/>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="#hasResource"/>
-            <Class IRI="#Resurse"/>
-        </ObjectAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Resurse"/>
+        <Class IRI="#Resource"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="#description"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Resurse"/>
+        <Class IRI="#Resource"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="#name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ResourceQuantity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasResource"/>
+            <Class IRI="#Resource"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ResourceQuantity"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#quantity"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -233,8 +274,8 @@
         <Class IRI="#Donation"/>
         <Class IRI="#Geoname"/>
         <Class IRI="#Person"/>
+        <Class IRI="#Resource"/>
         <Class IRI="#ResourceQuantity"/>
-        <Class IRI="#Resurse"/>
     </DisjointClasses>
     <DataPropertyAssertion>
         <DataProperty IRI="#name"/>
@@ -324,7 +365,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasResource"/>
-        <Class IRI="#Resurse"/>
+        <Class IRI="#Resource"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasWarehouseLocation"/>
@@ -354,6 +395,18 @@
         <DataProperty IRI="#givenname"/>
         <Class IRI="#Donator"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#latitude"/>
+        <Class IRI="#Geoname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#longitude"/>
+        <Class IRI="#Geoname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#magnitude"/>
+        <Class IRI="#EarthquakeDisaster"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#city"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -379,7 +432,23 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#latitude"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#longitude"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#magnitude"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#quantity"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

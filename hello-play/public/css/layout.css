@@ -91,6 +91,31 @@
 		box-shadow:0px 1px 3px 2px rgba(0,0,0,0.1);
 	}
 	
+	
+	.form-bg-4{
+		width: 370px;
+		height: 348px;
+		-moz-border-radius:9px;
+		-webkit-border-radius:9px;
+		border-radius:9px;
+		margin: 150px auto 0;
+		background-color: gray;	
+		padding: 8px 0 0 8px;
+	}
+	
+	.form-bg-4 form {
+		width: 360px;
+		height: 339px;
+		background: #fff url(../images/bg_form.jpg) repeat-x top left;		
+		-moz-border-radius:4px;
+		-webkit-border-radius:4px;
+		border-radius:4px;
+		-moz-box-shadow:0px 1px 3px 2px rgba(0,0,0,0.1);
+		-webkit-box-shadow:0px 1px 3px 2px rgba(0,0,0,0.1);
+		box-shadow:0px 1px 3px 2px rgba(0,0,0,0.1);
+	}
+	
+	
 	.form-bg form h2 {
 		font-size: 14px;
 		font-weight: bold;
@@ -105,6 +130,20 @@
 	
 	
 	.form-bg-3 form h2 {
+		font-size: 14px;
+		font-weight: bold;
+		color: #555555;
+		font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		text-shadow: 0 1px 0 #fff;
+		filter: dropshadow(color=#fff, offx=0, offy=1);
+		line-height: 45px;
+		margin-bottom: 24px;
+		margin-left:25px;
+	}
+	
+	
+	
+	.form-bg-4 form h2 {
 		font-size: 14px;
 		font-weight: bold;
 		color: #555555;
