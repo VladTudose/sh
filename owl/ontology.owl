@@ -107,6 +107,9 @@
         <DataProperty IRI="#longitude"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#magnitude"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#name"/>
     </Declaration>
     <Declaration>
@@ -171,6 +174,13 @@
     <SubClassOf>
         <Class IRI="#EarthquakeDisaster"/>
         <Class IRI="#NaturalDisaster"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EarthquakeDisaster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#magnitude"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Geoname"/>
@@ -393,6 +403,10 @@
         <DataProperty IRI="#longitude"/>
         <Class IRI="#Geoname"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#magnitude"/>
+        <Class IRI="#EarthquakeDisaster"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#city"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -423,6 +437,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#longitude"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#magnitude"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

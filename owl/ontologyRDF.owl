@@ -185,6 +185,15 @@
     
 
 
+    <!-- http://socialhelper.com/ontology#magnitude -->
+
+    <DatatypeProperty rdf:about="&ontology;magnitude">
+        <rdfs:domain rdf:resource="&ontology;EarthquakeDisaster"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
     <!-- http://socialhelper.com/ontology#name -->
 
     <DatatypeProperty rdf:about="&ontology;name">
@@ -286,6 +295,12 @@
 
     <Class rdf:about="&ontology;EarthquakeDisaster">
         <rdfs:subClassOf rdf:resource="&ontology;NaturalDisaster"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&ontology;magnitude"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:subClassOf>
     </Class>
     
 
