@@ -29,7 +29,7 @@ object RequestEarthquakesController extends Controller {
             ++ (if(orderby != "") Map("orderby" -> orderby) else Map()))
         println("###################### " + map.toString())
         val req = url("http://comcat.cr.usgs.gov/fdsnws/event/1/query") <<? map
-        val rez = Http(req OK as.String).apply()
+        val rez = Http(req OK as.String).apply()     
         Ok(rez)
     }
 }
