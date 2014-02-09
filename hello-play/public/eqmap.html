@@ -16,11 +16,8 @@
   <script type="text/javascript">
       $.ajax({
         type: 'GET',
-        url: 'http://comcat.cr.usgs.gov/fdsnws/event/1/query?starttime=2014-02-09%2000:00:00&minmagnitude=5&format=geojson&orderby=time',
-        success: RenderMap,
-        error: function(xhr, status, error){
-            alert(xhr.responseText)
-        }
+        url: '/api/requestearthquakes',
+        success: RenderMap
     });
 
     function RenderMap(){
@@ -125,7 +122,6 @@
     	}
     	AutoCenter();
     }
-    RenderMap();
   </script> 
 </body>
 </html>
