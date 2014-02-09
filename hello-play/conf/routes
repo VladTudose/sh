@@ -7,58 +7,57 @@ GET     /donations                  controllers.Assets.at(path="/public", file="
 GET     /donators                   controllers.Assets.at(path="/public", file="donators.html")
 GET     /resourceQuantities         controllers.Assets.at(path="/public", file="resourceQuantities.html")
 
-
-
 GET     /message                    controllers.MessageController.getMessage()
 GET     /assets/javascripts/routes  controllers.MessageController.javascriptRoutes()
 GET     /bla                        controllers.MessageController.getBla(email: Option[String])
 POST    /fuseki                     controllers.MessageController.postFuseki()
 GET     /form.html                  controllers.Assets.at(path="/public", file="form.html")
 
+# API
+#-------------------------------------------------------------------------------
+POST       /api/donators                  controllers.DonatorController.post()
+GET        /api/donators                  controllers.DonatorController.getAll()
+GET        /api/donators/*id              controllers.DonatorController.get(id)
+DELETE     /api/donators/*id              controllers.DonatorController.delete(id)
+PUT        /api/donators/*id              controllers.DonatorController.put(id)
 
+POST       /api/locations                 controllers.LocationController.post()
+GET        /api/locations                 controllers.LocationController.getAll()
+GET        /api/locations/*id             controllers.LocationController.get(id)
+DELETE     /api/locations/*id             controllers.LocationController.delete(id)
+PUT        /api/locations/*id             controllers.LocationController.put(id)
 
-#API
-POST    /api/donators           controllers.DonatorController.post()
-GET     /api/donators           controllers.DonatorController.getAll()
-GET     /api/donators/*id    controllers.DonatorController.get(id)
-DELETE     /api/donators/*id    controllers.DonatorController.delete(id)
-PUT        /api/donators/*id    controllers.DonatorController.put(id)
+POST       /api/resources                 controllers.ResourceController.post()
+GET        /api/resources                 controllers.ResourceController.getAll()
+GET        /api/resources/*id             controllers.ResourceController.get(id)
+DELETE     /api/resources/*id             controllers.ResourceController.delete(id)
+PUT        /api/resources/*id             controllers.ResourceController.put(id)
 
-POST    /api/locations           controllers.LocationController.post()
-GET     /api/locations           controllers.LocationController.getAll()
-GET     /api/locations/*id    controllers.LocationController.get(id)
-DELETE     /api/locations/*id    controllers.LocationController.delete(id)
-PUT        /api/locations/*id    controllers.LocationController.put(id)
-
-POST    /api/resources           controllers.ResourceController.post()
-GET     /api/resources           controllers.ResourceController.getAll()
-GET     /api/resources/*id    controllers.ResourceController.get(id)
-DELETE     /api/resources/*id    controllers.ResourceController.delete(id)
-PUT        /api/resources/*id    controllers.ResourceController.put(id)
-
-POST    /api/resourcequantities           controllers.ResourceQuantityController.post()
-GET     /api/resourcequantities           controllers.ResourceQuantityController.getAll()
-GET     /api/resourcequantities/*id    controllers.ResourceQuantityController.get(id)
+POST       /api/resourcequantities        controllers.ResourceQuantityController.post()
+GET        /api/resourcequantities        controllers.ResourceQuantityController.getAll()
+GET        /api/resourcequantities/*id    controllers.ResourceQuantityController.get(id)
 DELETE     /api/resourcequantities/*id    controllers.ResourceQuantityController.delete(id)
 PUT        /api/resourcequantities/*id    controllers.ResourceQuantityController.put(id)
 
-POST    /api/donations           controllers.DonationController.post()
-GET     /api/donations           controllers.DonationController.getAll()
-GET     /api/donations/*id    controllers.DonationController.get(id)
-DELETE     /api/donations/*id    controllers.DonationController.delete(id)
-PUT        /api/donations/*id    controllers.DonationController.put(id)
+POST       /api/donations                 controllers.DonationController.post()
+GET        /api/donations                 controllers.DonationController.getAll()
+GET        /api/donations/*id             controllers.DonationController.get(id)
+DELETE     /api/donations/*id             controllers.DonationController.delete(id)
+PUT        /api/donations/*id             controllers.DonationController.put(id)
 
-POST    /api/disasters           controllers.DisasterController.post()
-GET     /api/disasters           controllers.DisasterController.getAll()
-GET     /api/disasters/*id    controllers.DisasterController.get(id)
-DELETE     /api/disasters/*id    controllers.DisasterController.delete(id)
-PUT        /api/disasters/*id    controllers.DisasterController.put(id)
+POST       /api/disasters                 controllers.DisasterController.post()
+GET        /api/disasters                 controllers.DisasterController.getAll()
+GET        /api/disasters/*id             controllers.DisasterController.get(id)
+DELETE     /api/disasters/*id             controllers.DisasterController.delete(id)
+PUT        /api/disasters/*id             controllers.DisasterController.put(id)
 
-POST    /api/warehouses           controllers.WarehouseController.post()
-GET     /api/warehouses           controllers.WarehouseController.getAll()
-GET     /api/warehouses/*id    controllers.WarehouseController.get(id)
-DELETE     /api/warehouses/*id    controllers.WarehouseController.delete(id)
-PUT        /api/warehouses/*id    controllers.WarehouseController.put(id)
+POST       /api/warehouses                controllers.WarehouseController.post()
+GET        /api/warehouses                controllers.WarehouseController.getAll()
+GET        /api/warehouses/*id            controllers.WarehouseController.get(id)
+DELETE     /api/warehouses/*id            controllers.WarehouseController.delete(id)
+PUT        /api/warehouses/*id            controllers.WarehouseController.put(id)
+
+#-------------------------------------------------------------------------------
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

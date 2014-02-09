@@ -11,19 +11,16 @@ import models._
 
 case class Message(value: String)
 
-//class Donator(val id: Int, val email: String, val firstName: String, val givenName: String)
-
 object MessageController extends Controller {
 
   implicit val fooWrites = Json.writes[Message]
-  implicit val donatorWrites = Json.writes[Donator]
 
   def getMessage = Action {
     Ok(Json.toJson(Message("Hello from Scala")))
   }
   
   def getBla(email: Option[String]) = Action {
-      Ok(Json.toJson(Donator(11, email.get, "Robert", "Petrov")))
+      Ok("bla")
   }
 
   def javascriptRoutes = Action { implicit request =>

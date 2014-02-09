@@ -13,7 +13,7 @@ class ModelSpec extends Specification {
   "Model objects" should {
     
     "create correctly" in new WithApplication {
-      val donator = new models.Donator(1, "a@b.com", "Robert", "Petrov")
+      //val donator = new models.Donator(1, "a@b.com", "Robert", "Petrov")
     }
 
   }
