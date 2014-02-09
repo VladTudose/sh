@@ -66,12 +66,12 @@ trait CrudController extends Controller {
                 )
             )
         )
-        Ok(Json.prettyPrint(Json.toJson(json)))
+        Ok(Json.prettyPrint(Json.toJson(json))).as("application/json")
     }
     
     def get(id: String) = Action {
         val (s, p, o) = getBindings(id)
-        Ok(Json.prettyPrint(makeJson(id, p zip o)))
+        Ok(Json.prettyPrint(makeJson(id, p zip o))).as("application/json")
     }
   
     def delete(id: String) = Action {
