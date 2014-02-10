@@ -3,12 +3,12 @@
 
 $(document).ready(function() {
 
-		$("#form" ).click(function() {
+		$("#formButton" ).click(function() {
 			
 			event.preventDefault();
 			generateSuccessNoty();
 			setTimeout(function () {
-					$("#form" ).submit();
+					$("form" ).submit();
 			}, 2000);
 			
 		});	
