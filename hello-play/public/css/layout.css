@@ -154,6 +154,19 @@
 		margin-bottom: 24px;
 		margin-left:25px;
 	}
+	#container  table{
+		margin-top: 10%;
+		margin-left: 25%;
+	}
+	
+	#container button{
+		background: url(../images/delete.png) no-repeat;
+		float:none;
+		margin-right:14px;
+	}
+	#container button:hover{
+		background: url(../images/delete_hover.png) no-repeat !important;
+	}
 	input[type="text"], input[type="password"]{
 		box-shadow: 0px 0px 0px 4px #f2f5f7;
 		width: 290px;
@@ -236,6 +249,52 @@
 	}
 
 	
+	
+	
+	.noty_text{
+		color: #FFFFFF !important;
+		font-size: 13px !important;
+		line-height: 16px !important;
+		text-align: left !important;
+		color: rgb(0, 100, 0) !important;
+		cursor: pointer !important;
+		list-style-type: none !important;
+		list-style-position: inside !important;
+	}
+	
+	#noty_bottomRight_layout_container{
+		bottom: 120px !important;
+		right: 220px !important;
+		position: fixed !important;
+		width: 310px !important;
+		height: 50px !important;
+		margin: 0px !important;
+		padding: 0px !important;
+		z-index: 10000000 !important;
+		list-style-type: none !important;
+	
+	}
+	
+	
+	#noty_bottomRight_layout_container li
+	{
+	
+		overflow: hidden !important;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAoCAYAAAAPOoFWAAAAGXRFW…lIN+2qKRyCND0bhqSYCyTB3CAOc4WusBEIpkeBuPgJMAAX8Hs1NfqHRgAAAABJRU5ErkJggg==) !important;
+		background-attachment: scroll !important;
+		background-color: rgb(144, 238, 144) !important;
+		border-top-left-radius: 5px !important;
+		border-top-right-radius: 5px !important;
+		border-bottom-right-radius: 0px !important;
+		border-bottom-left-radius: 0px !important;
+		border: 1px solid rgb(80, 194, 78) !important;
+		box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px !important;
+		color: rgb(0, 100, 0) !important;
+		width: 310px !important;
+		cursor: pointer !important;
+		background-position: 0% 0% !important;
+		background-repeat: repeat no-repeat !important;
+	}
 
 /* #Media Queries
 ================================================== */
