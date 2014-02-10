@@ -8,6 +8,9 @@ import play.api.libs.json.Json._
 trait CrudController extends Controller {
     def domain: String
     def fields: Seq[(String, Option[String])]
+    def links: Seq[String] = Seq()
+    def arrayFields: Seq[String] = Seq()
+    def doExtra(body: Map[String, Seq[String]]) = {}
     
     def apiPath = "http://socialhelper.com/api/"
     def fusekiUrl = "http://localhost:3030/ds/"
@@ -23,6 +26,7 @@ trait CrudController extends Controller {
     
     def post = Action { request =>
         val body = request.body.asFormUrlEncoded
+        doExtra(body.get)
         val id = java.util.UUID.randomUUID.toString
         val ttl = "@prefix : <" + domainPath + "> .\n" +
         ":" + id + "\n" + (fields map {
@@ -32,7 +36,7 @@ trait CrudController extends Controller {
         }) + " ."
         val req = url(postUrl).POST.setBody(ttl).addHeader("Content-type", "text/turtle")
         Http(req OK as.String)
-        Ok("{id: " + id + "}")
+        Redirect("/api/" + domain)
     }
     
     def getAll = Action {
@@ -42,7 +46,7 @@ trait CrudController extends Controller {
         } map {
             case (id, po) => makeJson(id, po)
         }
-        val json = Json.toJson(
+        val json = toJson(
             Map(
                 "_links" -> toJson(
                     Map(
@@ -66,7 +70,7 @@ trait CrudController extends Controller {
                 )
             )
         )
-        Ok(Json.prettyPrint(Json.toJson(json))).as("application/json")
+        Ok(Json.prettyPrint(toJson(json))).as("application/json")
     }
     
     def get(id: String) = Action {
@@ -77,7 +81,7 @@ trait CrudController extends Controller {
     def delete(id: String) = Action {
         val req = url (updateUrl).POST << Map("update" -> deleteCommand.format(id, id))
         val rez = Http(req OK as.String)
-        Ok(rez.apply())
+        Redirect("/api/" + domain)
     }
     
     def put(id: String) = Action { request =>
@@ -93,7 +97,8 @@ trait CrudController extends Controller {
         }) + " ."
         val req = url(postUrl).POST.setBody(ttl).addHeader("Content-type", "text/turtle")
         Http(req OK as.String)
-        Ok("{id: " + id + "}")
+        // Ok("{id: " + id + "}")
+        Redirect("/api/" + domain)
     }
     
     def getTurtleList(vals: Seq[String], prefix: Option[String]) = {
@@ -119,8 +124,8 @@ trait CrudController extends Controller {
         (s, p, o)
     }
     
-    def makeValueFromSeq(vals: Seq[JsValue]) = {
-        if(vals.tail.isEmpty)
+    def makeValueFromSeq(pre: String, vals: Seq[JsValue]) = {
+        if(vals.tail.isEmpty && (arrayFields find { af => af == pre }).isEmpty)
             vals.head
         else
             toJson(vals)
@@ -147,11 +152,18 @@ trait CrudController extends Controller {
     }
     
     def makeJson(id: String, po: Seq[(String, (String, String))]): JsValue = {
-        val properties = po groupBy { case (p, _) => p } map { case (p, po) =>
-            (p, makeValueFromSeq(po.unzip._2 map(makeValueFromString))) } groupBy{
+        val properties = po filter {
+            case (p, _) => (links find { l => l == p }).isEmpty } groupBy {
+            case (p, _) => p } map { case (p, po) =>
+            (p, makeValueFromSeq(p, po.unzip._2 map(makeValueFromString))) } groupBy{
             case (p, _) => (fields find { f => f._1 == p }).get._2 isEmpty
         }
-        Json.toJson(
+        val extraLinks = Map((po filter {
+            case (p, _) => !((links find { l => l == p }).isEmpty) } map {
+            case (p, (t, v)) => (p, toJson(
+                Map( "href" -> v.substring(apiPath.length() - 1))))
+        }): _*)
+        toJson(
             Map(
                 "_links" -> toJson(
                     Map(
@@ -160,7 +172,7 @@ trait CrudController extends Controller {
                                 "href" -> toJson("/" + domain + "/" + id)
                             )
                         )
-                    )
+                    ) ++ extraLinks
                 )
             )
             ++ (if(properties.get(true).isEmpty) Map() else properties(true))
