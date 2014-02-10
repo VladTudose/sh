@@ -28,25 +28,19 @@ $(document).ready(function() {
 		});
 			
 		function render() {
-		var table = $('<table id=\"data\" class=\"table-content\"></table>').addClass('foo');
+		var table = $('<table id=\"data\"></table>').addClass('foo');
 			
 			row = $('<tr id=\"header\"></tr>');
 			table.append(row);
-			
-			addToRow(row,"Warehouse");
-			addToRow(row,"Donator");
-			addToRow(row,"ResourceQuantity");
-			addToRow(row,"Quantity");
-			addToRow(row,"Resource Name");
-			addToRow(row,"Donator Name");
-			
+			addToRow(row,"City");
+			addToRow(row,"Latitude");
+			addToRow(row,"Longitude");
 			addToRow(row,"");
-			
-			
+				
 					
 			$.ajax({
                     type: "GET",
-                    url: "http://localhost:9000/api/donations",
+                    url: "http://localhost:9000/api/donators",
                     acccept: "application/json",
                     success: function(response) {
 							print(response);
@@ -59,25 +53,16 @@ $(document).ready(function() {
 			
 		}
 		function print(response){
-			for(var i=0;i<response._embedded.donations.length;i++)
+			for(var i=0;i<response._embedded.donators.length;i++)
 			{
-				var item = response._embedded.donations[i];
+				var item = response._embedded.donators[i];
 				var link = item._links.self.href;
 				row = $('<tr ></tr>');
 				$("#data").append(row);
-				
-				addToRow(row,item._links.warehouse.href,link);
-				addToRow(row,item._embedded.donator._links.self.href,link);
-				addToRow(row,item._embedded.resourcequantity._links.self.href,link);
-				addToRow(row,item._embedded.resourcequantity.quantity,link);
-				addToRow(row,item._embedded.resourcequantity._embedded.resource._links.self.href,link);
-				
-				addToRow(row,item._embedded.donator.firstname + " "+ item._embedded.donator.lastname,link);
-			
-				
-				
+				addToRow(row,item.lastname,link);
+				addToRow(row,item.firstname,link);
+				addToRow(row,item.email,link);
 				addToDeleteRow(row,item);
-				
 			}
 		}
 	

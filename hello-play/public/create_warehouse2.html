@@ -23,9 +23,9 @@
 		  <nav style="width: 100%;">
 			<ul class="sf-menu" id="nav">
 			  <li><a href="index.html">Index</a></li>
-			  <li><a href="resourcequantities.html">ResourceQuantities</a></li>
-			  <li class="selected"><a href="create_resourcequantity.html">Create ResourceQuantity</a></li>
-		  
+			  <li class="selected"><a href="create_warehouse.html">Create Warehouse</a></li>
+			  <li><a href="put_warehouse.html">Update Warehouse</a></li>
+			  <li><a href="delete_warehouse.html">Delete Warehouse</a></li>		  
 			</ul>
 		  </nav>
 		</header>
@@ -33,12 +33,12 @@
 		  <div id="content">			
 				<div class="container">
 					<div class="form-bg">
-						<form action="/api/resourcequantities" method="POST">
-								<h2>Create ResourceQuantity</h2>
-								<input type="text" name="resource" placeholder="Resource"><br>
-								<input type="text" name="quantity" placeholder="Quantity"><br>
-								<button type="submit"></button>
-						</form>						
+						<form action="/api/warehouses" method="POST">
+							<h2>Create Warehouse</h2>
+							<input type="text" name="location" placeholder="Location"><br>
+							<input type="text" name="inventory" placeholder="Inventory"><br>
+							<button type="submit"></button>
+						</form>
 					</div>
 				</div><!-- container -->
 			<p id="tags"><strong>Tags:</strong> social, helper, donation, resource</p>

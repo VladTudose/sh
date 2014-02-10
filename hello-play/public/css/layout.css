@@ -158,6 +158,12 @@
 		margin-top: 10%;
 		margin-left: 25%;
 	}
+	.table-content{
+		margin-top: 10%;
+		margin-right: 40px !important;
+		margin-left: 0!important;
+		
+	}
 	
 	#container button{
 		background: url(../images/delete.png) no-repeat;
