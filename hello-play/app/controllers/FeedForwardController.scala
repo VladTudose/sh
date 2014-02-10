@@ -7,7 +7,13 @@ import play.api.libs.json.Json._
 import models.Earthquake
 
 object FeedForwardController extends Controller {
-    def processAllWarehouses = Action {
+    def processAllWarehouses = Action { request =>
+        val body = request.body.asFormUrlEncoded
+        val starttime = body.get("starttime")(0)
+        val minmagnitude = body.get("minmagnitude")(0)
+       
+        val maxradiuskm = body.get("maxradiuskm")(0)
+        
         //Json x = Warehouse.getall        
         val req = url("http://localhost:9000/api/warehouses").GET.addHeader("Accept", "application/json")
         val result = Json.parse(Http(req OK as.String).apply())
@@ -19,10 +25,10 @@ object FeedForwardController extends Controller {
             val latitude = (warehouse \ "_embedded" \ "location" \ "latitude").as[String]
             val longitude = (warehouse \ "_embedded" \ "location" \ "longitude").as[String]
             val minradiuskm = "0"
-            val maxradiuskm = "1000"
+            //val maxradiuskm = "1000"
             val orderby = "time"
-            val starttime = "2013-01-01 00:00:00"
-            val minmagnitude = "4.5"
+            //val starttime = "2013-01-01 00:00:00"
+            //val minmagnitude = "4.5"
             val limit = "20000"
             
             val map = (Map(
@@ -50,17 +56,18 @@ object FeedForwardController extends Controller {
                 var eq = new Earthquake(new java.util.Date(date), mag)
                 eqList.add(eq)
             }
+            println("#######"+eqList.size())
             var ff = new FeedForwardNN();
             var prediction = ff.predictNextValue(eqList)
             
-            var lregression = new PolynomialRegression(eqList, 1)
-            var lprediction = lregression.predict(eqList.size())
+            //var lregression = new PolynomialRegression(eqList, 1)
+            //var lprediction = lregression.predict(eqList.size())
             
             val warehousePrediction = Map(
               "latitude" -> toJson(latitude),
               "longitude" -> toJson(longitude),
-              "prediction" -> toJson(prediction.toString()),
-              "linear_prediction" -> toJson(lprediction.toString())
+              "prediction" -> toJson(prediction.toString())
+              //"linear_prediction" -> toJson(lprediction.toString())
             )
             warehousePredictions = warehousePrediction :: warehousePredictions
         }

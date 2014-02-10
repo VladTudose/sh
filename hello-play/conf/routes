@@ -63,4 +63,4 @@ PUT        /api/warehouses/*id            controllers.WarehouseController.put(id
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
 POST    /api/requestearthquakes     controllers.RequestEarthquakesController.post()
-GET     /api/processwarehouses      controllers.FeedForwardController.processAllWarehouses()
+POST    /api/processwarehouses      controllers.FeedForwardController.processAllWarehouses()
