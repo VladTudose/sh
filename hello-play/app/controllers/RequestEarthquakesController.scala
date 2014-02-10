@@ -26,7 +26,8 @@ object RequestEarthquakesController extends Controller {
             ++ (if(longitude != "") Map("longitude" -> longitude) else Map())
             ++ (if(minradiuskm != "") Map("minradiuskm" -> minradiuskm) else Map())
             ++ (if(maxradiuskm != "") Map("maxradiuskm" -> maxradiuskm) else Map())
-            ++ (if(orderby != "") Map("orderby" -> orderby) else Map()))
+            ++ (if(orderby != "") Map("orderby" -> orderby) else Map())
+            ++ Map("limit" -> "20000"))
         println("###################### " + map.toString())
         val req = url("http://comcat.cr.usgs.gov/fdsnws/event/1/query") <<? map
         val rez = Http(req OK as.String).apply()     

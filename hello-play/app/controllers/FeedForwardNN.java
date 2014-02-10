@@ -1,3 +1,4 @@
+package controllers;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,6 +14,7 @@ import org.neuroph.core.transfer.Tanh;
 import org.neuroph.core.transfer.TransferFunction;
 import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
+import models.Earthquake;
 
 /**
  * Created with IntelliJ IDEA.
@@ -85,10 +87,16 @@ public class FeedForwardNN {
     }
 
     public Double predictNextValue(List<Earthquake> eqList){
+        if (eqList.size() == 0){
+            return 0d;
+        } 
+        if (eqList.size() == 1){
+            return 1d;
+        }
+        
         List<Double> dList = discretizeEqList(eqList);
         Integer n = new Double(Math.sqrt(dList.size())).intValue();
         DataSet trainingSet = new DataSet(n, 1);
-
         for (int i = n-1; i < dList.size() - 1; i++){
             //0..i input, i+1 output
             ArrayList<Double> input = new ArrayList<Double>();
