@@ -44,7 +44,7 @@ $(document).ready(function() {
                     url: "http://localhost:9000/api/locations",
                     acccept: "application/json",
                     success: function(response) {
-							print(JSON.parse(response));
+							print(response);
                         }
                     })
                 
@@ -53,7 +53,7 @@ $(document).ready(function() {
 			$('#container').append(table);
 			
 		}
-		function print(response,table){
+		function print(response){
 			for(var i=0;i<response._embedded.locations.length;i++)
 			{
 				var item = response._embedded.locations[i];
