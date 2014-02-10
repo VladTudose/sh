@@ -295,6 +295,30 @@
 		background-position: 0% 0% !important;
 		background-repeat: repeat no-repeat !important;
 	}
+	.side_by_side{
+		width: 300px !important; 
+		border: 1px solid gray !important; 
+		float: left !important;
+	}
+	#mapContainer{
+		margin-top: 20%;
+		margin-left: 17%;
+	}
+	
+	#eqmap
+	{
+		width:500px;
+		height:200px;
+		background: url(../images/eqmap.png) no-repeat top right;
+		cursor:pointer;
+	}
+	#whmap
+	{
+		width:500px;
+		height:200px;
+		background: url(../images/whmap.png) no-repeat top right;
+		cursor:pointer;
+	}
 
 /* #Media Queries
 ================================================== */
