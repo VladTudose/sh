@@ -9,8 +9,10 @@
 		<link rel="stylesheet" href="css/base.css">
 		<link rel="stylesheet" href="css/skeleton.css">
 		<link rel="stylesheet" href="css/layout.css">
+			
 	  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
 	</head>
+	
 	<body>
 	  <div id="main">
 		<header>
@@ -23,23 +25,20 @@
 		  <nav style="width: 100%;">
 			<ul class="sf-menu" id="nav">
 			  <li><a href="index.html">Index</a></li>
-			  <li><a href="resourcequantities.html">ResourceQuantities</a></li>
-			  <li class="selected"><a href="create_resourcequantity.html">Create ResourceQuantities</a></li>
-		  
+			  <li class="selected"><a href="donators.html">Donators</a></li>
+			  <li><a href="create_donator.html">Create Donator</a></li>
 			</ul>
 		  </nav>
 		</header>
 		<div id="site_content">
 		  <div id="content">			
 				<div class="container">
-					<div class="form-bg">
-						<form action="/api/resourcequantities" method="POST">
-								<h2>Create ResourceQuantities</h2>
-								<input type="text" name="resource" placeholder="Resource"><br>
-								<input type="text" name="quantity" placeholder="Quantity"><br>
-								<button type="submit"></button>
-						</form>						
-					</div>
+					
+							<h2>List Donations</h2>
+							<div id="container"></div>
+							
+						
+					
 				</div><!-- container -->
 			<p id="tags"><strong>Tags:</strong> social, helper, donation, resource</p>
 		  </div>
@@ -52,5 +51,7 @@
 	  <script type="text/javascript" src="js/jquery.js"></script>
 	  <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
 	  <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+	  <script type="text/javascript" src="js/donators.js"></script>
+	  
 	</body>
 </html>
