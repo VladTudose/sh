@@ -1,13 +1,25 @@
 package controllers;
 import Jama.Matrix;
 import Jama.QRDecomposition;
+import models.Earthquake;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Calendar;
 
 public class PolynomialRegression {
     private final int N;
     private final int degree;
-    private final Matrix beta;
-    private double SSE;
-    private double SST;
+    private Matrix beta = null;
+    private double SSE = 0d;
+    private double SST = 0d;
+    
+    public static Date getLastMonth(Date d){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        cal.add(Calendar.DATE, - 30);
+        return cal.getTime();
+    }
 
     public PolynomialRegression(double[] x, double[] y, int degree) {
         this.degree = degree;
@@ -47,6 +59,87 @@ public class PolynomialRegression {
         SSE = residuals.norm2() * residuals.norm2();
 
     }
+    
+    public PolynomialRegression(List<Earthquake> eqList, int degree) {
+        this.degree = degree;
+        if (eqList.size() == 0){
+            N = 0;
+            return;
+        }
+        if (eqList.size() == 1){
+            N = 1;
+            return;
+        }
+        List<Double> y2 = new ArrayList<Double>();
+        Date lastEq = eqList.get(0).date;
+        double maxMag = 0;//eqList.get(0).magnitude;
+
+        //System.out.println(lastEq);
+        List<Double> x2 = new ArrayList<Double>();
+        double max = 0d;
+        for (int i = 1; i < eqList.size(); i++){
+            if (eqList.get(i).date.before(getLastMonth(lastEq))){
+                if (max < maxMag){
+                    max = maxMag;
+                }
+                x2.add(new Double(y2.size()));
+                y2.add(maxMag);
+                maxMag = 0;
+                lastEq = eqList.get(i).date;
+                //System.out.println(lastEq);
+            } else {
+                maxMag ++;
+                /*if (eqList.get(i).magnitude > maxMag){
+                    maxMag = eqList.get(i).magnitude;
+                }*/
+            }
+        }
+        x2.add(new Double(y2.size()));
+        y2.add(maxMag);
+        double[] x = new double[x2.size()];
+        double[] y = new double[x2.size()];
+        
+        for (int i =0 ;i<y2.size();i++){
+            x[i] = x2.get(i);
+            y[i] = y2.get(i);
+        }
+
+        
+        N = x.length;
+
+        // build Vandermonde matrix
+        double[][] vandermonde = new double[N][degree+1];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j <= degree; j++) {
+                vandermonde[i][j] = Math.pow(x[i], j);
+            }
+        }
+        Matrix X = new Matrix(vandermonde);
+
+        // create matrix from vector
+        Matrix Y = new Matrix(y, N);
+
+        // find least squares solution
+        QRDecomposition qr = new QRDecomposition(X);
+        beta = qr.solve(Y);
+
+
+        // mean of y[] values
+        double sum = 0.0;
+        for (int i = 0; i < N; i++)
+            sum += y[i];
+        double mean = sum / N;
+
+        // total variation to be accounted for
+        for (int i = 0; i < N; i++) {
+            double dev = y[i] - mean;
+            SST += dev*dev;
+        }
+
+        // variation not accounted for
+        Matrix residuals = X.times(beta).minus(Y);
+        SSE = residuals.norm2() * residuals.norm2();
+    }
 
     public double beta(int j) {
         return beta.get(j, 0);
@@ -62,6 +155,10 @@ public class PolynomialRegression {
 
     // predicted y value corresponding to x
     public double predict(double x) {
+        if (N == 0)
+            return 0;
+        if (N == 1)
+            return 1;
         // horner's method
         double y = 0.0;
         for (int j = degree; j >= 0; j--)

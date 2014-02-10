@@ -52,10 +52,15 @@ object FeedForwardController extends Controller {
             }
             var ff = new FeedForwardNN();
             var prediction = ff.predictNextValue(eqList)
+            
+            var lregression = new PolynomialRegression(eqList, 1)
+            var lprediction = lregression.predict(eqList.size())
+            
             val warehousePrediction = Map(
               "latitude" -> toJson(latitude),
               "longitude" -> toJson(longitude),
-              "prediction" -> toJson(prediction.toString())
+              "prediction" -> toJson(prediction.toString()),
+              "linear_prediction" -> toJson(lprediction.toString())
             )
             warehousePredictions = warehousePrediction :: warehousePredictions
         }
